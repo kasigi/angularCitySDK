@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Test Application</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body nd-app="censusEdu" ng-controller="MainController as main">
+
+<div class="container">
+
+    <h1>Education Levels
+        <small>CitySDK & Angular Demo</small>
+    </h1>
+
+    <h2>Select a State</h2>
+    <label for="state">State:</label>
+    <select class="reqparam form-control" id='state'>
+        <option value=""></option>
+    </select>
+
+    <h2>Education <small>Displaying for Virginia</small></h2>
+    <table class="table table-striped">
+        <thead>
+        <th>Education Level</th>
+        <th>Population Fraction [raw]</th>
+        <th>Population Fraction [Display]</th>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Sample</td>
+            <td>35.42%</td>
+            <td></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+</div><!-- end container -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+<script src="js/angularCitySDKApp.js"></script>
+<script src="js/angularCitySDK.ctrl.js"></script>
+
+
+</body>
+</html>

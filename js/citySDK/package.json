@@ -1,0 +1,24 @@
+{
+  "name": "citySDK",
+  "version": "1.6.0",
+  "description": "",
+  "main": "citysdk.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uscensusbureau/citysdk.git"
+  },
+  "author": "Tor N. Johnson",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/uscensusbureau/citysdk/issues"
+  },
+  "dependencies": {
+    "jquery": "~2.2.2",
+    "jsdom": "~8.1.0",
+    "terraformer": "^1.0.5",
+    "terraformer-arcgis-parser": "^1.0.4"
+  }
+}
