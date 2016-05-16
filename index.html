@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Angular Test Application</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body nd-app="censusEdu" ng-controller="MainController as main">
+<body ng-app="censusEdu" ng-controller="MainController as main">
 
 <div class="container">
 
@@ -16,11 +16,19 @@
 
     <h2>Select a State</h2>
     <label for="state">State:</label>
-    <select class="reqparam form-control" id='state'>
-        <option value=""></option>
+    <select ng-change="main.selectState()" class="reqparam form-control" id="state" ng-model="main.stateInput">
+        <option ng-repeat="state in main.states" value="{{state.stateabbrev}}" ng-bind="state.stateName"></option>
     </select>
 
-    <h2>Education <small>Displaying for Virginia</small></h2>
+    <div ng-show="main.loadingData">
+        <div class="alert alert-info loadingDataAlert" role="alert"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+            <span ng-bind="main.processingDisplay"></span>
+        </div>
+
+    </div>
+
+    <div ng-hide="main.hasStateData()">
+    <h2>Education <small>Displaying for <span ng-bind="main.stateInput"></span></small></h2>
     <table class="table table-striped">
         <thead>
         <th>Education Level</th>
@@ -28,24 +36,31 @@
         <th>Population Fraction [Display]</th>
         </thead>
         <tbody>
-        <tr>
-            <td>Sample</td>
-            <td>35.42%</td>
-            <td></td>
+        <tr ng-repeat="eduLevel in main.stateData">
+            <td ng-bind="eduLevel.level"></td>
+            <td ng-bind="eduLevel.perCapitaFormatted"></td>
+            <td>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{eduLevel.perCapitaUnformatted}}" aria-valuemin="0" aria-valuemax="{{ main.maxscale }}" style="width: {{eduLevel.perCapitaFormatted}};">
+                        <span class="sr-only">{{eduLevel.perCapitaFormatted}}</span>
+                    </div>
+                </div>
+            </td>
         </tr>
 
         </tbody>
     </table>
-
+    </div>
 
 </div><!-- end container -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="js/citySDK/citysdk.js"></script>
+<script src="js/citySDK/citysdk.census.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-        crossorigin="anonymous"></script>
+
 <script src="js/angularCitySDKApp.js"></script>
 <script src="js/angularCitySDK.ctrl.js"></script>
 
