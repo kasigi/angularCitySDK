@@ -21,35 +21,38 @@
     </select>
 
     <div ng-show="main.loadingData">
-        <div class="alert alert-info loadingDataAlert" role="alert"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+        <div class="alert alert-info loadingDataAlert" role="alert">
+            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
             <span ng-bind="main.processingDisplay"></span>
         </div>
 
     </div>
 
     <div ng-hide="main.hasStateData()">
-    <h2>Education <small>Displaying for <span ng-bind="main.stateInput"></span></small></h2>
-    <table class="table table-striped">
-        <thead>
-        <th>Education Level</th>
-        <th>Population Fraction [raw]</th>
-        <th>Population Fraction [Display]</th>
-        </thead>
-        <tbody>
-        <tr ng-repeat="eduLevel in main.stateData">
-            <td ng-bind="eduLevel.level"></td>
-            <td ng-bind="eduLevel.perCapitaFormatted"></td>
-            <td>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{eduLevel.perCapitaUnformatted}}" aria-valuemin="0" aria-valuemax="{{ main.maxscale }}" style="width: {{eduLevel.perCapitaFormatted}};">
-                        <span class="sr-only">{{eduLevel.perCapitaFormatted}}</span>
+        <h2>Education
+            <small>Displaying for <span ng-bind="main.stateInput"></span></small>
+        </h2>
+        <table class="table table-striped">
+            <thead>
+                <th>Education Level</th>
+                <th>Population Fraction [raw]</th>
+                <th>Population Fraction [Display]</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="eduLevel in main.stateData">
+                <td ng-bind="eduLevel.level"></td>
+                <td ng-bind="eduLevel.perCapitaFormatted"></td>
+                <td>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="{{eduLevel.perCapitaUnformatted}}" aria-valuemin="0" aria-valuemax="{{ main.maxscale }}" style="width: {{eduLevel.perCapitaFormatted}};">
+                            <span class="sr-only">{{eduLevel.perCapitaFormatted}}</span>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
 
-        </tbody>
-    </table>
+            </tbody>
+        </table>
     </div>
 
 </div><!-- end container -->
