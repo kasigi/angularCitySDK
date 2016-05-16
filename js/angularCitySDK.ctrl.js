@@ -82,7 +82,7 @@ angular.module('censusEdu').controller("MainController", function(){
 
 
                     var newBlock = {};
-                    newBlock.level = index.replace("_"," ").toTitleCase();
+                    newBlock.level = index.replace(new RegExp("_",'g')," ").toTitleCase();
                     newBlock.perCapita = value / intermediateData.population;
                     newBlock.perCapitaUnformatted =(Math.round (newBlock.perCapita*100*100) / 100);
                     newBlock.perCapitaFormatted = newBlock.perCapitaUnformatted + "%";
